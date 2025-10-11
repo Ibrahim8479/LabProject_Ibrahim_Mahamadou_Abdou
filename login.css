@@ -1,0 +1,81 @@
+body{
+
+    font-family:'Times New Roman', Times, serif;
+    background-color: beige;
+    background-image: url("/attendace.jpg");
+    background-repeat: repeat;
+}
+.all_in_it{
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 40px;
+margin-top: 5%;
+
+}
+#form{   
+   margin-bottom: 30px; 
+}
+#form_c{
+    margin-bottom: 30px; 
+    width: 100%;
+}
+
+.card_class{
+background:#333;
+border-radius: 12px;
+box-shadow: 0 10px 40px whitesmoke;
+padding: 40px;
+max-width: 450px;
+width: 100%;
+margin: 0 auto;
+}
+
+label {
+display: block;
+margin-bottom: 8px;
+color:white;
+font-weight: 500;
+font-size: 14px;
+}
+input, select {
+    width: 90%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.btn {
+width: 90%;
+padding: 14px;
+background: white;
+color: #333;
+border-radius: 8px;
+font-size: 17px;
+cursor: pointer;
+text-decoration: none;
+text-align: center;
+background-color:white;
+}
+a{
+text-decoration: none;
+color:white;
+text-align: center;
+font-size: 14px;
+
+}
+.link_Sign{
+
+    position: absolute;
+    top: 5%;
+    left: 90%;
+    background-color:#333;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    border: solid 2px black;
+}
+a:hover{
+    color: red;
+}
