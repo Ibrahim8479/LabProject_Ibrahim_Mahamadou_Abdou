@@ -1,0 +1,86 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    color: #333;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+      
+}
+
+.brand{
+    font-size: 22px;
+ }
+
+a{
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+a:hover{
+    color: red;
+}
+
+.container{
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    }
+
+.card{
+    border-radius: 10px;
+    box-shadow: 0 5px 20px ;
+    padding: 25px;
+}
+
+.welcome{
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-top: 20px;
+    }
+
+h3{
+    border-bottom: 2px solid black;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+}
+
+.courses{
+    display: grid;
+   grid-template-columns: repeat(3, 1fr);
+
+}
+
+.course{
+    background: wheat;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #333;
+    }
+table{
+    width: 100%;
+    margin-top: 10px;
+}
+
+td{
+    padding: 10px;
+    text-align: left;
+    
+    
+}
+
+th{background: #f8f9fa; 
+}
+
+
+
