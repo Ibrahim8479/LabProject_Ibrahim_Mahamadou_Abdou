@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn Page</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="all_in_it">
+        <div class="card_class">
+            <div class="logo" style="text-align: center;">
+                <h1 style="color:white; font-size: 20px;">🏫 Attendance Management <br>System</h1>
+            </div>
+            <form method="get">
+             <div id="form">
+                <label for="loginEmail">Email Address</label>
+                 <input type="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div id="form">
+                    <label for="loginPassword">Password</label>
+                <input type="password"  name="password" placeholder="Enter your password" required>
+                </div>
+
+                <div id="form_c" style="text-align:center;">
+                    <p style="color:white;">Login as:</p>
+                    <button type="submit" formaction="StudentDash.html" class="btn">Student</button>
+                    <button type="submit" formaction="Faculty.html" class="btn">Faculty</button>
+                    <button type="submit" formaction="Faculty_int.html" class="btn">Faculty Intern</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px; color: aliceblue;" class="link_Sign">
+        <a href="signup.html">Sign up</a>
+    </div>
+</body>
+</html>
