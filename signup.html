@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="logo" style="text-align: center;">
+            <h1 style="color:white;">Create Your Account</h1>
+           </div>
+            <form method="get">
+          <div id="form">
+        <label for="fullName">Full Name</label>
+             <input type="text"  name="fullName" placeholder="Enter your full name" required>
+        </div>
+
+        <div id="form">
+             <label for="signupEmail">Email Address</label>
+            <input type="email"  name="email" placeholder="Enter your email" required>
+                </div>
+            <div id="form">
+            <label for="signupPassword">Password</label>
+                 <input type="password"  name="password" placeholder="Create a password" required>
+            </div>
+
+                <div id="form">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password"  name="confirmPassword" placeholder="Re-enter your password" required>
+                </div>
+                <div id="form_c" style="text-align:center;">
+                    <p style="color:white;">Register as:</p>
+                    <button type="submit" formaction="login.html" class="btn">Student</button>
+                    <button type="submit" formaction="login.html" class="btn">Faculty</button>
+                    <button type="submit" formaction="login.html" class="btn">Faculty Intern</button>
+                </div>
+
+                <div class="link" style="text-align:center; margin-top: 15px;">Already have an account? <a href="login.html">Login</a>
+           </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
