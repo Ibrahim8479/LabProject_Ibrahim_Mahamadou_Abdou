@@ -1,6 +1,6 @@
 body {
     font-family: 'Times New Roman', Times, serif;
-background-image: url(/attendace.jpg);
+    background-image: url(/attendace.jpg);
 }
 
 .container {
@@ -9,69 +9,91 @@ background-image: url(/attendace.jpg);
     align-items: center;
     padding: 20px;
 }
+
 .card {
-background: #333;
-border-radius: 12px;
-box-shadow: 0 10px 40px whitesmoke;
-padding: 40px;
-max-width: 450px;
-width: 100%;
-color: white;
+    background: #333;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px whitesmoke;
+    padding: 40px;
+    max-width: 450px;
+    width: 100%;
+    color: white;
 }
 
 .logo{
-text-align: center;
-margin-bottom: 30px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 h1{
-font-size: 24px;
-font-weight: 600;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 #form {
-margin-bottom: 20px;
+    margin-bottom: 20px;
 }
+
 #form_c{
     margin-bottom: 30px; 
     width: 100%;
 }
-label {
-display: block;
-margin-bottom: 8px;
-color:white;
- font-weight: 500;
-font-size: 14px;
-}
-input, select {
-width: 100%;
-padding: 12px;
-border: 2px solid #e0e0e0;
-border-radius: 8px;
-font-size: 14px;
-}
-.btn {
-width: 90%;
-padding: 14px;
-background: white;
-color: #333;
-border-radius: 8px;
-font-size: 17px;
-cursor: pointer;
-text-decoration: none;
-text-align: center;
-background-color:white;
 
-            }
+label {
+    display: block;
+    margin-bottom: 8px;
+    color:white;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.btn {
+    width: 90%;
+    padding: 14px;
+    background: white;
+    color: #333;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    background-color:white;
+    border: none;
+    margin: 5px;
+}
+
+.btn:hover {
+    background: #f0f0f0;
+}
+
 .link{
-text-align: center;
-margin-top: 20px;
- color:white;
- font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+    color:white;
+    font-size: 14px;
 }
 
 a{
- color: red;
-text-decoration: none;
- font-weight: 600;
+    color: red;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: #ff4444;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
 }
