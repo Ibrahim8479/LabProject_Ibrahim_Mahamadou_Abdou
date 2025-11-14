@@ -12,22 +12,25 @@
             <div class="logo" style="text-align: center;">
                 <h1 style="color:white; font-size: 20px;">🏫 Attendance Management <br>System</h1>
             </div>
-            <form method="get">
+            
+            <div id="successMessage" style="display:none; background: #44ff44; color: white; padding: 10px; border-radius: 5px; margin-bottom: 15px;"></div>
+            <div id="errorMessages" style="display:none; background: #ff4444; color: white; padding: 10px; border-radius: 5px; margin-bottom: 15px;"></div>
+            
+            <form method="POST" action="login_process.php" id="loginForm">
              <div id="form">
                 <label for="loginEmail">Email Address</label>
-                 <input type="email" name="email" placeholder="Enter your email" required>
+                 <input type="email" id="loginEmail" name="email" placeholder="Enter your email" required>
+                 <span class="error" id="emailError"></span>
                 </div>
 
                 <div id="form">
                     <label for="loginPassword">Password</label>
-                <input type="password"  name="password" placeholder="Enter your password" required>
+                <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+                <span class="error" id="passwordError"></span>
                 </div>
 
                 <div id="form_c" style="text-align:center;">
-                    <p style="color:white;">Login as:</p>
-                    <button type="submit" formaction="StudentDash.html" class="btn">Student</button>
-                    <button type="submit" formaction="Faculty.html" class="btn">Faculty</button>
-                    <button type="submit" formaction="Faculty_int.html" class="btn">Faculty Intern</button>
+                    <button type="submit" class="btn">Login</button>
                 </div>
             </form>
         </div>
@@ -36,5 +39,7 @@
     <div style="text-align: center; margin-top: 20px; color: aliceblue;" class="link_Sign">
         <a href="signup.html">Sign up</a>
     </div>
+    
+    <script src="login.js"></script>
 </body>
 </html>

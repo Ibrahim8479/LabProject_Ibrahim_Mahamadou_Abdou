@@ -1,46 +1,29 @@
-
+// login.js
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('signupForm');
-    const fullName = document.getElementById('fullName');
-    const email = document.getElementById('signupEmail');
-    const password = document.getElementById('signupPassword');
-    const confirmPassword = document.getElementById('confirmPassword');
+    const form = document.getElementById('loginForm');
+    const email = document.getElementById('loginEmail');
+    const password = document.getElementById('loginPassword');
     
-    fullName.addEventListener('blur', validateName);
+    // Check for registration success message
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('registered') === '1') {
+        const successDiv = document.getElementById('successMessage');
+        successDiv.textContent = 'Registration successful! Please login.';
+        successDiv.style.display = 'block';
+    }
+    
     email.addEventListener('blur', validateEmail);
     password.addEventListener('blur', validatePassword);
-    confirmPassword.addEventListener('blur', validateConfirmPassword);
     
     form.addEventListener('submit', function(e) {
-        const isNameValid = validateName();
         const isEmailValid = validateEmail();
         const isPasswordValid = validatePassword();
-        const isConfirmValid = validateConfirmPassword();
         
-        if (!isNameValid || !isEmailValid || !isPasswordValid || !isConfirmValid) {
+        if (!isEmailValid || !isPasswordValid) {
             e.preventDefault();
             showAlert('Please fix all errors before submitting', 'error');
         }
     });
-    
-    function validateName() {
-        const nameValue = fullName.value.trim();
-        const nameError = document.getElementById('nameError');
-        
-        if (nameValue === '') {
-            showError(nameError, 'Full name is required');
-            return false;
-        } else if (nameValue.length < 3) {
-            showError(nameError, 'Name must be at least 3 characters');
-            return false;
-        } else if (!/^[a-zA-Z\s]+$/.test(nameValue)) {
-            showError(nameError, 'Name can only contain letters and spaces');
-            return false;
-        } else {
-            clearError(nameError);
-            return true;
-        }
-    }
     
     function validateEmail() {
         const emailValue = email.value.trim();
@@ -69,33 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (passwordValue.length < 6) {
             showError(passwordError, 'Password must be at least 6 characters');
             return false;
-        } else if (!/(?=.*[a-z])/.test(passwordValue)) {
-            showError(passwordError, 'Password must contain at least one lowercase letter');
-            return false;
-        } else if (!/(?=.*[A-Z])/.test(passwordValue)) {
-            showError(passwordError, 'Password must contain at least one uppercase letter');
-            return false;
-        } else if (!/(?=.*\d)/.test(passwordValue)) {
-            showError(passwordError, 'Password must contain at least one number');
-            return false;
         } else {
             clearError(passwordError);
-            return true;
-        }
-    }
-    
-    function validateConfirmPassword() {
-        const confirmValue = confirmPassword.value;
-        const confirmError = document.getElementById('confirmError');
-        
-        if (confirmValue === '') {
-            showError(confirmError, 'Please confirm your password');
-            return false;
-        } else if (confirmValue !== password.value) {
-            showError(confirmError, 'Passwords do not match');
-            return false;
-        } else {
-            clearError(confirmError);
             return true;
         }
     }
