@@ -3,112 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Faculty Dashboard</title>
     <link rel="stylesheet" href="Faculty.css">
 </head>
 <body>
 <nav class="nav_bar">
     <div class="band">Faculty</div>
     <div class="link">
-        <a href="#Management">course Management</a>
+        <a href="#Management">Course Management</a>
         <a href="#sessions">Session Overview</a>
         <a href="#Attendance">Attendance Reports</a>
-        <a href="login.html">LogOut</a>
+        <a href="logout.php">Logout</a>
     </div>
 </nav>
 <div class="container">
     <div class="card">
         <div class="welcome">
-            <h2> Welcome Professor Daniel</h2>
+            <h2 id="welcomeMessage">Welcome</h2>
         </div>
-        <div class=" section_part" id="Management">
-        <h3>coures management</h3>
-        <a href="" class="btn">+ Add New Course</a>
-        <table>
-            <tr>
-                <th>Course Id</th>
-                <th>Course name</th>
-                <th>No Students</th>
-                <th>Action</th>
-            </tr>
-            <tr>
-                <td>CS341</td>
-                <td>Web Technologies</td>
-                <td>45</td>
-                <td>
-                    <a href="#" class="btn2">Edit</a>
-                    <a href="#" class="btn2">Delete</a>
-                    <a href="#" class="btn2">Create</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td>CS342</td>
-                <td>Algorithm Design & Analysis</td>
-                <td>38</td>
-                <td>
-                    <a href="#" class="btn2">Edit</a>
-                    <a href="#" class="btn2">Delete</a>
-                    <a href="#" class="btn2">Create</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td>CS343</td>
-                <td>Natural Language Processing</td>
-                <td>42</td>
-                <td>
-                    <a href="#" class="btn2">Edit</a>
-                    <a href="#" class="btn2">Delete</a>
-                    <a href="#" class="btn2">Create</a>
-                </td>
-            </tr>
-        </table>
-         
+        
+        <div id="messageArea"></div>
+        
+        <div class="section_part" id="Management">
+            <h3>Course Management</h3>
+            <button class="btn2" onclick="showAddCourseModal()">+ Add New Course</button>
+            <table>
+                <tr>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                    <th>No. Students</th>
+                    <th>Actions</th>
+                </tr>
+                <tbody id="coursesTable"></tbody>
+            </table>
         </div>
+        
         <div class="dashboard-section" id="sessions">
-        <h3>Session Overview</h3>
-        <table>
-    
-            <tr>
-            <th>Course</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Attendance Rate</th>
-            </tr>
-            <tr>
-            <td>CS341 - Web Technologies</td>
-            <td>Oct 10, 2025</td>
-            <td>10:00 AM</td>
-            <td>87%</td>
-
-            </tr>
-            <tr>
-            <td>CS342 - Algorithm Design & Analysis</td>
-            <td>Oct 09, 2025</td>
-            <td>2:00 PM</td>
-            <td>91%</td>
-            </tr>
-
-        </table>
+            <h3>Session Overview</h3>
+            <table>
+                <tr>
+                    <th>Course</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Attendance Rate</th>
+                </tr>
+                <tbody id="sessionsTable"></tbody>
+            </table>
         </div>
+        
         <div class="dashboard-section" id="Attendance">
             <h3>Attendance Reports</h3>
-            <div class="course-list">
-            <div class="course-item">
-            <h4>Overall Attendance</h4>
-            <p>Average: 89%</p>
-            </div>
-        <div class="course-item">
-            <h4>Students at Risk</h4>
-            <p>Below 75%: 8 students</p>
+            <div class="course-list" id="statsContainer"></div>
         </div>
-        <div class="course-item">
-            <h4>Perfect Attendance</h4>
-            <p>100%: 12 students</p>
-        </div>
-            
     </div>
 </div>
+
+<!-- Add Course Modal -->
+<div id="addCourseModal" class="modal">
+    <div class="modal-content">
+        <h3>Add New Course</h3>
+        <form id="addCourseForm">
+            <div>
+                <label>Course ID:</label>
+                <input type="text" name="course_id" required>
+            </div>
+            <div>
+                <label>Course Name:</label>
+                <input type="text" name="course_name" required>
+            </div>
+            <button type="submit" class="btn2">Add Course</button>
+            <button type="button" class="btn2" onclick="closeModal('addCourseModal')">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<!-- Create Session Modal -->
+<div id="sessionModal" class="modal">
+    <div class="modal-content">
+        <h3>Create New Session</h3>
+        <form id="sessionForm">
+            <input type="hidden" name="course_id" id="sessionCourseId">
+            <div>
+                <label>Date:</label>
+                <input type="date" name="session_date" required>
+            </div>
+            <div>
+                <label>Time:</label>
+                <input type="time" name="session_time" required>
+            </div>
+            <div>
+                <label>Location:</label>
+                <input type="text" name="location" required>
+            </div>
+            <button type="submit" class="btn2">Create Session</button>
+            <button type="button" class="btn2" onclick="closeModal('sessionModal')">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<script src="Faculty.js"></script>
 </body>
 </html>

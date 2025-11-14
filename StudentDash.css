@@ -1,6 +1,8 @@
 body{
     font-family: 'Times New Roman', Times, serif;
     color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 nav{
@@ -8,12 +10,18 @@ nav{
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-      
+    padding: 20px 40px;
 }
 
 .brand{
     font-size: 22px;
- }
+    font-weight: bold;
+}
+
+.links{
+    display: flex;
+    gap: 20px;
+}
 
 a{
     margin-left: 20px;
@@ -21,6 +29,7 @@ a{
     color: #333;
     font-weight: 500;
 }
+
 a:hover{
     color: red;
 }
@@ -29,11 +38,11 @@ a:hover{
     max-width: 1000px;
     margin: 30px auto;
     padding: 20px;
-    }
+}
 
 .card{
     border-radius: 10px;
-    box-shadow: 0 5px 20px ;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     padding: 25px;
 }
 
@@ -47,7 +56,7 @@ a:hover{
 
 .section {
     margin-top: 20px;
-    }
+}
 
 h3{
     border-bottom: 2px solid black;
@@ -57,8 +66,8 @@ h3{
 
 .courses{
     display: grid;
-   grid-template-columns: repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
 }
 
 .course{
@@ -66,21 +75,35 @@ h3{
     padding: 15px;
     border-radius: 10px;
     border-left: 4px solid #333;
-    }
+}
+
 table{
     width: 100%;
     margin-top: 10px;
+    border-collapse: collapse;
 }
 
-td{
+td, th{
     padding: 10px;
     text-align: left;
-    
-    
+    border-bottom: 1px solid #e0e0e0;
 }
 
-th{background: #f8f9fa; 
+th{
+    background: #f8f9fa;
+    font-weight: 600;
 }
 
-
-
+@media (max-width: 768px) {
+    .courses {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        flex-direction: column;
+    }
+    
+    .links {
+        margin-top: 10px;
+    }
+}
