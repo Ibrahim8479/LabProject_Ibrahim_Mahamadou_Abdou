@@ -13,94 +13,74 @@
         <a href="#Course_liste">Course List</a>
         <a href="#sessions">Session</a>
         <a href="#reports">Reports</a>
-        <a href="login.html">LogOut</a>
+        <a href="logout.php">LogOut</a>
     </div>
 </nav>
 <div class="container">
     <div class="card">
         <div class="welcome">
-            <h2> Welcome Dear</h2>
+            <h2 id="welcomeMessage">Welcome</h2>
         </div>
+        
+        <div id="messageArea"></div>
+        
     <section class="dashboard-course" id="Course_liste">
-        <h3>Coure List</h3>
+        <h3>Course List</h3>
+        <div class="course-list" id="coursesList"></div>
+    </section>
+    
+    <section id="sections">
+        <div class="dashboard-section" id="sessions">
+            <h3>Sessions</h3>
             <table>
-         <div class="" id="Attendance">
-            <div class="course-list">
-            <div class="course-item">
-            <h4>CS341 - Web Technologies</h4>
-            <p>Mr. David Sampah</p>
-            </div>
-        <div class="course-item">
-            <h4>CS342 - Algorithm Design & Analysis</h4>
-            <p>Mr.Sampson Asare</p>
+                <tr>
+                <th>Course</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Action</th>
+                </tr>
+                <tbody id="sessionsTable"></tbody>
+            </table>
         </div>
-        <div class="course-item">
-            <h4>CS459_A - Natural Language Processing</h4>
-            <p>Mr. Dennis Owusu</p>
+     </section>
+
+     <div class="dashboard-section" id="reports">
+            <h3>Reports</h3>
+            <table>
+                <tr>
+                <th>Date</th>
+                <th>Course</th>
+                <th>Notes</th>
+                <th>Action</th>
+                </tr>
+                <tbody id="reportsTable"></tbody>
+            </table>
         </div>
-        </table>
-</section>
-<section id="sections">
-    <div class="dashboard-section" id="sessions">
-        <h3>Sessions</h3>
-
-        <table>
-    
-            <tr>
-            <th>Course</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>location</th>
-            </tr>
-            <tr>
-            <td>CS341 - Web Technologies</td>
-            <td>Oct 10, 2025</td>
-            <td>10:00 AM</td>
-            <td>Room 222</td>
-
-            </tr>
-            <tr>
-            <td>CS342  - Algorithm Design & Analysis</td>
-            <td>Oct 09, 2025</td>
-            <td>2:00 PM</td>
-            <td>Room 116</td>
-            </tr>
-
-        </table>
- </section>
-
- <div class="dashboard-section" id="reports">
-        <h3>Reports</h3>
-        <table>
-    
-            <tr>
-            <th>Date</th>
-            <th>Course</th>
-            <th>Notes</th>
-            </tr>
-            <tr>
-            <td>Oct 10, 2025</td>
-            <td>CS341</td>
-            <td>Good participation, 2 late arrivals</td>
-            <td>
-                    <a href="#" class="btn2">View</a>
-                </td>
-
-            </tr>
-            <tr>
-    
-            <td>Oct 09, 2025</td>
-            <td>CS342</td>
-            <td>Good participation</td>
-            <td>
-                    <a href="#" class="btn2">View</a>
-                </td>
-            </tr>
-
-        </table>
-       
-            
     </div>
 </div>
+
+<!-- Report Modal -->
+<div id="reportModal" class="modal">
+    <div class="modal-content">
+        <h3>Submit Session Report</h3>
+        <form id="reportForm">
+            <input type="hidden" name="course_id" id="reportCourseId">
+            <input type="hidden" name="session_id" id="reportSessionId">
+            <div>
+                <label>Report Date:</label>
+                <input type="date" name="report_date" required>
+            </div>
+            <div>
+                <label>Notes:</label>
+                <textarea name="notes" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="btn2">Submit Report</button>
+            <button type="button" class="btn2" onclick="closeModal('reportModal')">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<script src="Faculty_int.js"></script>
 </body>
 </html>
