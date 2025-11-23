@@ -58,7 +58,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Attendance - Attendance Management System</title>
+    <title>My Attendance</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -86,7 +86,73 @@ $conn->close();
                 <p class="stat-number"><?php echo $stats['absent_count']; ?></p>
             </div>
             <div class="stat-card stat-info">
-                <h3>Attendance Rate</h>
-
+                <h3>Attendance Rate</h3>
+                <p class="stat-number"><?php echo $attendance_percentage; ?>%</p>
+            </div>
+        </div>
+        
+        <div class="filter-section">
+            <form method="GET" action="">
+                <div class="form-group">
+                    <label for="course">Filter by Course</label>
+                    <select id="course" name="course" onchange="this.form.submit()">
+                        <option value="0">All Courses</option>
+                        <?php 
+                        $courses->data_seek(0);
+                        while ($course = $courses->fetch_assoc()): 
+                        ?>
+                            <option value="<?php echo $course['course_id']; ?>" <?php echo ($course_filter == $course['course_id']) ? 'selected' : ''; ?>>
+                                <?php echo htmlspecialchars($course['course_code'] . ' - ' . $course['course_name']); ?>
+                            </option>
+                        <?php endwhile; ?>
+                    </select>
+                </div>
+            </form>
+        </div>
+        
+        <div class="table-section">
+            <h2>Attendance Records</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Course</th>
+                        <th>Topic</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Check-in Time</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if ($attendance_records->num_rows > 0): ?>
+                        <?php while ($record = $attendance_records->fetch_assoc()): ?>
+                        <tr>
+                            <td><?php echo date('M d, Y', strtotime($record['date'])); ?></td>
+                            <td><?php echo htmlspecialchars($record['course_code']); ?></td>
+                            <td><?php echo htmlspecialchars($record['topic']); ?></td>
+                            <td><?php echo date('h:i A', strtotime($record['start_time'])) . ' - ' . date('h:i A', strtotime($record['end_time'])); ?></td>
+                            <td><?php echo htmlspecialchars($record['location']); ?></td>
+                            <td>
+                                <span class="status-badge status-<?php echo $record['status']; ?>">
+                                    <?php echo ucfirst($record['status']); ?>
+                                </span>
+                            </td>
+                            <td><?php echo $record['check_in_time'] ? date('h:i A', strtotime($record['check_in_time'])) : '-'; ?></td>
+                            <td><?php echo htmlspecialchars($record['remarks'] ?? '-'); ?></td>
+                        </tr>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="8" class="text-center">No attendance records found</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script src="../js/logout.js"></script>
 </body>
 </html>
