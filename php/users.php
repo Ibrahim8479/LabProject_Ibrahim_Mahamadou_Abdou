@@ -1,17 +1,40 @@
 <?php
-require_once 'auth_check.php';
+// Enable error display for debugging
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-if (getCurrentUserRole() !== 'admin') {
-    header('Location: dashboard.php');
-    exit();
+// Check if auth_check.php exists
+if (!file_exists('auth_check.php')) {
+    die('Error: auth_check.php not found in current directory: ' . __DIR__);
 }
 
-$conn = getDBConnection();
+require_once 'auth_check.php';
 
-$users_query = "SELECT u.user_id, u.first_name, u.last_name, u.email, u.role, u.dob, u.created_at FROM users ORDER BY u.created_at DESC";
-$users = $conn->query($users_query);
+    header('Location: login.php');
+    exit();
 
-$conn->close();
+
+try {
+    $conn = getDBConnection();
+    
+    if (!$conn) {
+        throw new Exception('Database connection failed');
+    }
+    
+    $users_query = "SELECT u.user_id, u.first_name, u.last_name, u.email, u.role, u.dob, u.created_at 
+                    FROM users u 
+                    ORDER BY u.created_at DESC";
+    
+    $users = $conn->query($users_query);
+    
+    if (!$users) {
+        throw new Exception('Query failed: ' . $conn->error);
+    }
+    
+} catch (Exception $e) {
+    die('Database Error: ' . $e->getMessage());
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,13 +46,19 @@ $conn->close();
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <?php include 'navbar.php'; ?>
+    <?php 
+    if (file_exists('navbar.php')) {
+        include 'navbar.php'; 
+    } else {
+        echo '<div style="padding: 1rem; background: #f44336; color: white;">Warning: navbar.php not found</div>';
+    }
+    ?>
     
     <div class="container">
         <h1>User Management</h1>
         
         <div class="table-section">
-            <h2>All Users</h2>
+            <h2>All Users (<?php echo $users->num_rows; ?>)</h2>
             <table class="data-table">
                 <thead>
                     <tr>
@@ -55,7 +84,7 @@ $conn->close();
                         <?php endwhile; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="6" class="text-center">No users found</td>
+                            <td colspan="6" style="text-align: center;">No users found</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
@@ -66,3 +95,8 @@ $conn->close();
     <script src="../js/logout.js"></script>
 </body>
 </html>
+<?php
+if (isset($conn)) {
+    $conn->close();
+}
+?>
