@@ -91,3 +91,9 @@ CREATE INDEX idx_attendance_student ON attendance(student_id);
 CREATE INDEX idx_course_requests_status ON course_requests(status);
 CREATE INDEX idx_course_requests_course ON course_requests(course_id);
 CREATE INDEX idx_course_requests_student ON course_requests(student_id);
+
+-- Add attendance_code column to sessions table
+ALTER TABLE sessions ADD COLUMN attendance_code VARCHAR(6) AFTER date;
+
+-- Create index for faster lookups
+CREATE INDEX idx_sessions_code ON sessions(attendance_code);
