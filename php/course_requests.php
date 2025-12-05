@@ -111,11 +111,11 @@ $conn->close();
                         <td><?php echo date('M d, Y h:i A', strtotime($request['requested_at'])); ?></td>
                         <td>
                             <button class="btn btn-success" 
-                                    onclick="handleRequest('approve', <?php echo $request['request_id']; ?>)">
+                                    onclick="processRequest(<?php echo $request['request_id']; ?>, 'approve')">
                                 Approve
                             </button>
                             <button class="btn btn-danger" 
-                                    onclick="handleRequest('reject', <?php echo $request['request_id']; ?>)">
+                                    onclick="processRequest(<?php echo $request['request_id']; ?>, 'reject')">
                                 Reject
                             </button>
                         </td>

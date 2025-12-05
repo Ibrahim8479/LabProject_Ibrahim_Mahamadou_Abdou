@@ -11,9 +11,17 @@ if (!file_exists('auth_check.php')) {
 
 require_once 'auth_check.php';
 
+// Check if user is logged in
+if (!isLoggedIn()) {
     header('Location: login.php');
     exit();
+}
 
+// Check if user is admin
+if (getCurrentUserRole() !== 'admin') {
+    header('Location: dashboard.php');
+    exit();
+}
 
 try {
     $conn = getDBConnection();
